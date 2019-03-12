@@ -10,12 +10,11 @@
         </ul> 
         <span v-if="!products.length">TODO: spinner</span>       
     </div>
-
 </template>
 
 <script>
 import ProductCard from './ProductCard';
-import store from "../store/store";
+import store from '../store/store';
 
 export default {
     name: 'ProductList',

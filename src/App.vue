@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import StoreComponent from "./components/StoreComponent.vue";
+import StoreComponent from './components/StoreComponent';
 
 export default {
     name: "App",
