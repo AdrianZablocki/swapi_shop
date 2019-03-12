@@ -8,6 +8,10 @@ const store = {
 
     async fetchPorducts() {
         this.state.products = await axios.get('https://swapi.co/api/people/').then(res => res.data.results);
+    },
+
+    deleteProduct(index) {
+        this.state.products.splice(index, 1);
     }
 }
 

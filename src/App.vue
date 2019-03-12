@@ -10,7 +10,7 @@ import StoreComponent from "./components/StoreComponent.vue";
 
 export default {
     name: "App",
-    
+
     components: {
         StoreComponent
     }

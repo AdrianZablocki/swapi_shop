@@ -2,7 +2,7 @@
     <li class="product-card">
         {{ product.name }}
         <div class="porduct-card__wrapper">
-            <button class="product-card__button">remove</button>
+            <button class="product-card__button" v-on:click="onRemoveProduct(index)">remove</button>
             <button class="product-card__button">add to cart</button>
         </div>
     </li>
@@ -15,6 +15,15 @@ export default {
     props: {
         product: {
             type: Object
+        },
+        index: {
+            type: Number
+        }
+    },
+
+    methods: {
+        onRemoveProduct(index) {
+            this.$emit('remove-product', index);
         }
     }
 }

@@ -23,22 +23,46 @@ export default {
         msg: String
     },
 
-    created() {
-        store.fetchPorducts();
-    },
-
-    mounted() {
-        console.log(this.sharedState);
-    },
-
     data() {
         return {
             sharedState: store.state
         };
-    }
+    },
+
+    beforeCreated() {
+        console.log('before created', this.sharedState);
+    },
+
+    created() {
+        store.fetchPorducts();
+        console.log('created', this.sharedState);
+    },
+
+    beforeMount() {
+        console.log('before mounted', this.sharedState);
+    },
+
+    mounted() {
+        console.log('mounted', this.sharedState);
+    },
+
+    beforeUpdate() {
+        console.log('before update', this.sharedState);
+    },
+
+    updated() {
+        console.log('updated', this.sharedState);
+    },
+
+    beforeDestroy() {
+        console.log('before Destroy', this.sharedState);
+    },
+
+    destroyed() {
+        console.log('Destroyed', this.sharedState);
+    },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
