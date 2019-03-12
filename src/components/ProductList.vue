@@ -1,7 +1,11 @@
 <template>
-    <ul>
-        <product-card v-for="(p, $idx) in products" :key="$idx" :product="p"></product-card>
-    </ul>
+    <div>
+        <ul>
+            <product-card v-for="(p, $idx) in products" :key="$idx" :product="p"></product-card>
+        </ul> 
+        <span v-if="!products.length">TODO: spinner</span>       
+    </div>
+
 </template>
 
 <script>

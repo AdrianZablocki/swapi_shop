@@ -1,12 +1,9 @@
 import axios from 'axios'
 
-import CHARACTERS from '../config/characters-config';
-
 const store = {
     state: {
         products: [],
-        cart: [],
-        characters: CHARACTERS
+        cart: []
     },
 
     async fetchPorducts() {
