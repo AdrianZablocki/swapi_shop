@@ -10,6 +10,7 @@ const store = {
     async fetchPorducts() {
         this.state.isLoading = true;
         await axios.get('https://swapi.co/api/people/').then(res => {
+            console.log(res);
             this.state.products = res.data.results;
             this.state.isLoading = false;
         });
@@ -29,7 +30,7 @@ const store = {
 
     removeProductfromCart(index) {
         this.state.cart.splice(index, 1);
-    }
+    } 
 }
 
 export default store;
