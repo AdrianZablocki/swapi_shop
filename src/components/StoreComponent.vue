@@ -1,21 +1,16 @@
 <template>
     <div class="store">
+        
         <h1 class="store__header">{{ msg }}</h1>
+
         <add-product-form @add-new-product="addNewProduct"></add-product-form>
 
         <div class="store__wprapper">
+
             <product-list class="store__products" :products="sharedState.products"></product-list>
 
+            <cart class="store__cart" :cart="sharedState.cart"></cart>
 
-            <!-- TODO: create component for cart -->
-            <ul class="store__cart">
-                <product-card 
-                    v-for="(p, index) in sharedState.cart" 
-                    :key="index" 
-                    :product="p"
-                    @remove-product="removeProductFromCart(index)">
-                </product-card>
-            </ul> 
         </div>
 
     </div>
@@ -27,6 +22,7 @@ import store from "../store/store";
 import ProductList from './ProductList';
 import AddProductForm from './AddProductForm';
 import ProductCard from './ProductCard';
+import Cart from './Cart';
 
 export default {
     name: "StoreComponent",
@@ -34,7 +30,8 @@ export default {
     components: {
         ProductList,
         AddProductForm,
-        ProductCard
+        ProductCard,
+        Cart
     },
 
     props: {
