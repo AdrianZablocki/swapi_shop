@@ -9,7 +9,6 @@
 <script>
 import store from "../store/store";
 
-import ProductCard from './ProductCard';
 import ProductList from './ProductList';
 import AddProductForm from './AddProductForm'
 
@@ -17,7 +16,6 @@ export default {
     name: "StoreComponent",
 
     components: {
-        ProductCard,
         ProductList,
         AddProductForm
     },
@@ -33,36 +31,36 @@ export default {
     },
 
     beforeCreated() {
-        console.log('before created', this.sharedState);
+        // console.log('before created', this.sharedState);
     },
 
     created() {
         store.fetchPorducts();
-        console.log('created', this.sharedState);
+        // console.log('created', this.sharedState);
     },
 
     beforeMount() {
-        console.log('before mounted', this.sharedState);
+        // console.log('before mounted', this.sharedState);
     },
 
     mounted() {
-        console.log('mounted', this.sharedState);
+        // console.log('mounted', this.sharedState);
     },
 
     beforeUpdate() {
-        console.log('before update', this.sharedState);
+        // console.log('before update', this.sharedState);
     },
 
     updated() {
-        console.log('updated', this.sharedState);
+        // console.log('updated', this.sharedState);
     },
 
     beforeDestroy() {
-        console.log('before Destroy', this.sharedState);
+        // console.log('before Destroy', this.sharedState);
     },
 
     destroyed() {
-        console.log('Destroyed', this.sharedState);
+        // console.log('Destroyed', this.sharedState);
     },
 };
 </script>

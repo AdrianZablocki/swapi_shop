@@ -2,10 +2,11 @@
     <div>
         <ul class="product-list">
             <product-card 
-                v-for="(p, $idx) in products" 
-                :key="$idx" 
+                v-for="(p, index) in products" 
+                :key="index" 
                 :product="p"
-                @remove-product="removeProduct"
+                @remove-product="removeProduct(index)"
+                @add-product="addProduct(p)"
             ></product-card>
         </ul> 
         <span v-if="!products.length">TODO: spinner</span>       
@@ -30,6 +31,10 @@ export default {
     methods: {
         removeProduct(index) {
             store.deleteProduct(index);
+        },
+
+        addProduct(product) {
+            store.addProduct(product);
         }
     }
 }

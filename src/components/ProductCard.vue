@@ -2,8 +2,8 @@
     <li class="product-card">
         {{ product.name }}
         <div class="porduct-card__wrapper">
-            <button class="product-card__button" v-on:click="onRemoveProduct(index)">remove</button>
-            <button class="product-card__button">add to cart</button>
+            <button class="product-card__button" v-on:click="onRemoveProduct">remove</button>
+            <button class="product-card__button" v-on:click="onAddProductToCart">add to cart</button>
         </div>
     </li>
 </template>
@@ -22,8 +22,12 @@ export default {
     },
 
     methods: {
-        onRemoveProduct(index) {
-            this.$emit('remove-product', index);
+        onRemoveProduct() {
+            this.$emit('remove-product');
+        },
+
+        onAddProductToCart() {
+            this.$emit('add-product');
         }
     }
 }

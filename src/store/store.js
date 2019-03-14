@@ -12,6 +12,10 @@ const store = {
 
     deleteProduct(index) {
         this.state.products.splice(index, 1);
+    },
+
+    addProduct(product) {
+        this.state.cart.push(product);
     }
 }
 
