@@ -6,6 +6,7 @@
                 v-for="(p, index) in products" 
                 :key="index" 
                 :product="p"
+                :showRemoveButton="true"
                 @remove-product="removeProduct(index)"
                 @add-product-to-cart="addProductToCart(p)">
             </product-card>

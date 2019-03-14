@@ -1,7 +1,7 @@
 <template>
     <div class="store">
         <h1 class="store__header">{{ msg }}</h1>
-        <add-product-form></add-product-form>
+        <add-product-form @add-new-product="addNewProduct"></add-product-form>
 
         <div class="store__wprapper">
             <product-list class="store__products" :products="sharedState.products"></product-list>
@@ -12,7 +12,8 @@
                 <product-card 
                     v-for="(p, index) in sharedState.cart" 
                     :key="index" 
-                    :product="p">
+                    :product="p"
+                    @remove-product="removeProductFromCart(index)">
                 </product-card>
             </ul> 
         </div>
@@ -46,38 +47,19 @@ export default {
         };
     },
 
-    beforeCreated() {
-        // console.log('before created', this.sharedState);
-    },
-
     created() {
         store.fetchPorducts();
-        // console.log('created', this.sharedState);
     },
 
-    beforeMount() {
-        // console.log('before mounted', this.sharedState);
-    },
-
-    mounted() {
-        // console.log('mounted', this.sharedState);
-    },
-
-    beforeUpdate() {
-        // console.log('before update', this.sharedState);
-    },
-
-    updated() {
-        // console.log('updated', this.sharedState);
-    },
-
-    beforeDestroy() {
-        // console.log('before Destroy', this.sharedState);
-    },
-
-    destroyed() {
-        // console.log('Destroyed', this.sharedState);
-    },
+    methods: {
+        addNewProduct(product) {
+            store.addProduct(product)
+        },
+        
+        removeProductFromCart(index) {
+            store.removeProductfromCart(index);
+        }
+    }
 };
 </script>
 
@@ -91,5 +73,8 @@ export default {
 .store__products,
 .store__cart {
     flex: 1 1 50%;
+}
+.store__cart {
+    padding-left: 10px;
 }
 </style>

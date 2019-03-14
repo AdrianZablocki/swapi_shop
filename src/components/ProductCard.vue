@@ -3,7 +3,7 @@
         {{ product.name }}
         <div class="porduct-card__wrapper">
             <button class="product-card__button" v-on:click="onRemoveProduct">remove</button>
-            <button class="product-card__button" v-on:click="onAddProductToCart">add to cart</button>
+            <button v-if="showRemoveButton" class="product-card__button" v-on:click="onAddProductToCart">add to cart</button>
         </div>
     </li>
 </template>
@@ -16,8 +16,11 @@ export default {
         product: {
             type: Object
         },
-        index: {
-            type: Number
+        // index: {
+        //     type: Number
+        // },
+        showRemoveButton: {
+            type: Boolean
         }
     },
 

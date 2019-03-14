@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VeeValidate from 'vee-validate';
 
+import './style.css';
+
 Vue.use(VeeValidate);
 
 Vue.config.productionTip = false;
