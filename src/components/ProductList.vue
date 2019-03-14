@@ -1,15 +1,15 @@
 <template>
     <div>
+        <span v-if="isLoading()">TODO: spinner</span> 
         <ul class="product-list">
             <product-card 
                 v-for="(p, index) in products" 
                 :key="index" 
                 :product="p"
                 @remove-product="removeProduct(index)"
-                @add-product="addProduct(p)"
-            ></product-card>
-        </ul> 
-        <span v-if="!products.length">TODO: spinner</span>       
+                @add-product-to-cart="addProductToCart(p)">
+            </product-card>
+        </ul>      
     </div>
 </template>
 
@@ -33,8 +33,12 @@ export default {
             store.deleteProduct(index);
         },
 
-        addProduct(product) {
-            store.addProduct(product);
+        addProductToCart(product) {
+            store.addProductToCart(product);
+        },
+
+        isLoading() {
+            return store.state.isLoading;
         }
     }
 }

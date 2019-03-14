@@ -1,8 +1,22 @@
 <template>
-    <div class="hello">
-        <h1>{{ msg }}</h1>
+    <div class="store">
+        <h1 class="store__header">{{ msg }}</h1>
         <add-product-form></add-product-form>
-        <product-list :products="sharedState.products"></product-list>
+
+        <div class="store__wprapper">
+            <product-list class="store__products" :products="sharedState.products"></product-list>
+
+
+            <!-- TODO: create component for cart -->
+            <ul class="store__cart">
+                <product-card 
+                    v-for="(p, index) in sharedState.cart" 
+                    :key="index" 
+                    :product="p">
+                </product-card>
+            </ul> 
+        </div>
+
     </div>
 </template>
 
@@ -10,14 +24,16 @@
 import store from "../store/store";
 
 import ProductList from './ProductList';
-import AddProductForm from './AddProductForm'
+import AddProductForm from './AddProductForm';
+import ProductCard from './ProductCard';
 
 export default {
     name: "StoreComponent",
 
     components: {
         ProductList,
-        AddProductForm
+        AddProductForm,
+        ProductCard
     },
 
     props: {
@@ -66,4 +82,14 @@ export default {
 </script>
 
 <style scoped>
+.store__header {
+    text-align: center;
+}
+.store__wprapper {
+    display: flex;
+}
+.store__products,
+.store__cart {
+    flex: 1 1 50%;
+}
 </style>

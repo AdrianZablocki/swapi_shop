@@ -27,7 +27,7 @@ export default {
         },
 
         onAddProductToCart() {
-            this.$emit('add-product');
+            this.$emit('add-product-to-cart');
         }
     }
 }
