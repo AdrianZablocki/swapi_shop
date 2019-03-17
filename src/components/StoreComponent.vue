@@ -6,10 +6,10 @@
         <add-product-form @add-new-product="addNewProduct"></add-product-form>
 
         <div class="store__wprapper">
+            
+            <product-list class="store__products" :products="products"></product-list>
 
-            <product-list class="store__products" :products="sharedState.products"></product-list>
-
-            <cart class="store__cart" :cart="sharedState.cart"></cart>
+            <cart class="store__cart" :cart="cart"></cart>
 
         </div>
 
@@ -17,12 +17,9 @@
 </template>
 
 <script>
-import store from "../store/store";
-
-import ProductList from './ProductList';
 import AddProductForm from './AddProductForm';
-import ProductCard from './ProductCard';
 import Cart from './Cart';
+import ProductList from './ProductList';
 
 export default {
     name: "StoreComponent",
@@ -30,7 +27,6 @@ export default {
     components: {
         ProductList,
         AddProductForm,
-        ProductCard,
         Cart
     },
 
@@ -38,23 +34,22 @@ export default {
         msg: String
     },
 
-    data() {
-        return {
-            sharedState: store.state
-        };
+    created() {
+        this.$store.dispatch('getProducts');
     },
 
-    created() {
-        store.fetchPorducts();
+    computed: {
+        products() {
+            return this.$store.state.products;
+        },
+        cart() {
+            return this.$store.state.cart;
+        }
     },
 
     methods: {
         addNewProduct(product) {
-            store.addProduct(product)
-        },
-        
-        removeProductFromCart(index) {
-            store.removeProductfromCart(index);
+            this.$store.dispatch('addProduct', product);
         }
     }
 };
