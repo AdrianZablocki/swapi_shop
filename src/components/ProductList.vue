@@ -35,7 +35,6 @@ export default {
         },
 
         addProductToCart(product) {
-            // store.addProductToCart(product);
             this.$store.dispatch('addProductToCart', product);
         },
 
