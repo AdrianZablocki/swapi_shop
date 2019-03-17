@@ -1,14 +1,14 @@
 <template>
     <div>
-        <span v-if="isLoading()">TODO: spinner</span> 
+        <span v-if="isLoading">TODO: spinner</span> 
         <ul class="product-list">
             <product-card 
-                v-for="(p, index) in products" 
+                v-for="(product, index) in products" 
                 :key="index" 
-                :product="p"
+                :product="product"
                 :showRemoveButton="true"
                 @remove-product="removeProduct(index)"
-                @add-product-to-cart="addProductToCart(p)">
+                @add-product-to-cart="addProductToCart(product)">
             </product-card>
         </ul>      
     </div>
@@ -16,7 +16,6 @@
 
 <script>
 import ProductCard from './ProductCard';
-import store from '../../store';
 
 export default {
     name: 'ProductList',
@@ -25,22 +24,24 @@ export default {
         ProductCard
     },
 
+    computed: {
+        isLoading() {
+            return this.$store.state.isLoading;
+        }
+    },
+
     props: {
         products: Array
     },
     
     methods: {
         removeProduct(index) {
-            store.deleteProduct(index);
+            this.$store.dispatch('deleteProduct', index);
         },
 
         addProductToCart(product) {
             this.$store.dispatch('addProductToCart', product);
         },
-
-        isLoading() {
-            return store.state.isLoading;
-        }
     }
 }
 </script>

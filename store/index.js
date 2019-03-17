@@ -8,20 +8,30 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         products: [],
-        cart: []
+        cart: [],
+        isLoading: true
     },
 
     mutations: {
         SET_PRODUCTS(state, products) {
             state.products = products;
+            state.isLoading = false;
         },
 
         ADD_PRODUCT(state, product) {
-            state.products.push(product);
+            state.products.unshift(product);
+        },
+
+        DELETE_PRODUCT(state, index) {
+            state.products.splice(index, 1);
         },
 
         ADD_PRODUCT_TO_CART(state, product) {
             state.cart.push(product);
+        },
+
+        DELETE_PRODUCT_FROM_CART(state, index) {
+            state.cart.splice(index, 1);
         }
     },
 
@@ -36,8 +46,16 @@ export default new Vuex.Store({
             commit('ADD_PRODUCT', payload);
         },
 
+        deleteProduct({ commit }, payload) {
+            commit('DELETE_PRODUCT', payload);
+        },
+
         addProductToCart({ commit }, payload) {
-            commit('ADD_PRODUCT_TO_CART', payload)
+            commit('ADD_PRODUCT_TO_CART', payload);
+        },
+
+        deleteProductFromCart({ commit }, payload) {
+            commit('DELETE_PRODUCT_FROM_CART', payload)
         }
     },
 

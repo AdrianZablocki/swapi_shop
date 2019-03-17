@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
         <store-component msg="Welcome in unique starwars characters shop!"/>
     </div>
 </template>

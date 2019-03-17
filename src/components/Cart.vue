@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import store from "../../store";
-
 import ProductCard from './ProductCard';
 
 export default {
@@ -25,9 +23,8 @@ export default {
 
     methods: {
         removeProductFromCart(index) {
-            store.removeProductfromCart(index);
+            this.$store.dispatch('deleteProductFromCart', index);
         }
     }
-    
 }
 </script>

@@ -6,8 +6,6 @@
         <add-product-form @add-new-product="addNewProduct"></add-product-form>
 
         <div class="store__wprapper">
-
-            <!-- <product-list class="store__products" :products="sharedState.products"></product-list> -->
             
             <product-list class="store__products" :products="products"></product-list>
 
@@ -19,12 +17,9 @@
 </template>
 
 <script>
-import store from "../../store";
-
-import ProductList from './ProductList';
 import AddProductForm from './AddProductForm';
-import ProductCard from './ProductCard';
 import Cart from './Cart';
+import ProductList from './ProductList';
 
 export default {
     name: "StoreComponent",
@@ -32,7 +27,6 @@ export default {
     components: {
         ProductList,
         AddProductForm,
-        ProductCard,
         Cart
     },
 
@@ -41,10 +35,7 @@ export default {
     },
 
     created() {
-        // store.fetchPorducts();
         this.$store.dispatch('getProducts');
-
-        console.log(this.cart)
     },
 
     computed: {
@@ -58,15 +49,8 @@ export default {
 
     methods: {
         addNewProduct(product) {
-            // eslint-disable-next-line
-            console.log(product);
             this.$store.dispatch('addProduct', product);
-        },
-        
-        //TODO: change for vuex
-        // removeProductFromCart(index) {
-        //     store.removeProductfromCart(index);
-        // }
+        }
     }
 };
 </script>

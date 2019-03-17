@@ -23,9 +23,6 @@ export default {
         product: {
             type: Object
         },
-        // index: {
-        //     type: Number
-        // },
         showRemoveButton: {
             type: Boolean
         }
