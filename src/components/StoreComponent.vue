@@ -7,9 +7,11 @@
 
         <div class="store__wprapper">
 
-            <product-list class="store__products" :products="sharedState.products"></product-list>
+            <!-- <product-list class="store__products" :products="sharedState.products"></product-list> -->
+            
+            <product-list class="store__products" :products="products"></product-list>
 
-            <cart class="store__cart" :cart="sharedState.cart"></cart>
+            <cart class="store__cart" :cart="cart"></cart>
 
         </div>
 
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import store from "../store/store";
+import store from "../../store";
 
 import ProductList from './ProductList';
 import AddProductForm from './AddProductForm';
@@ -38,24 +40,33 @@ export default {
         msg: String
     },
 
-    data() {
-        return {
-            sharedState: store.state
-        };
+    created() {
+        // store.fetchPorducts();
+        this.$store.dispatch('getProducts');
+
+        console.log(this.cart)
     },
 
-    created() {
-        store.fetchPorducts();
+    computed: {
+        products() {
+            return this.$store.state.products;
+        },
+        cart() {
+            return this.$store.state.cart;
+        }
     },
 
     methods: {
         addNewProduct(product) {
-            store.addProduct(product)
+            // eslint-disable-next-line
+            console.log(product);
+            this.$store.dispatch('addProduct', product);
         },
         
-        removeProductFromCart(index) {
-            store.removeProductfromCart(index);
-        }
+        //TODO: change for vuex
+        // removeProductFromCart(index) {
+        //     store.removeProductfromCart(index);
+        // }
     }
 };
 </script>

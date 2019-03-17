@@ -16,7 +16,7 @@
 
 <script>
 import ProductCard from './ProductCard';
-import store from '../store/store';
+import store from '../../store';
 
 export default {
     name: 'ProductList',
@@ -35,7 +35,8 @@ export default {
         },
 
         addProductToCart(product) {
-            store.addProductToCart(product);
+            // store.addProductToCart(product);
+            this.$store.dispatch('addProductToCart', product);
         },
 
         isLoading() {

@@ -2,8 +2,15 @@
     <li class="product-card">
         {{ product.name }}
         <div class="porduct-card__wrapper">
-            <button class="product-card__button" v-on:click="onRemoveProduct">remove</button>
-            <button v-if="showRemoveButton" class="product-card__button" v-on:click="onAddProductToCart">add to cart</button>
+            <button 
+                class="product-card__button" 
+                v-on:click="onRemoveProduct">remove
+            </button>
+            <button 
+                v-if="showRemoveButton" 
+                class="product-card__button" 
+                v-on:click="onAddProductToCart">add to cart
+            </button>
         </div>
     </li>
 </template>
