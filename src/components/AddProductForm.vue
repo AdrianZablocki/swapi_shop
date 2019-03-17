@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import store from '../store/store';
 
 export default {
     name: 'AddProductForm',

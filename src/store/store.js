@@ -10,6 +10,7 @@ const store = {
     async fetchPorducts() {
         this.state.isLoading = true;
         await axios.get('https://swapi.co/api/people/').then(res => {
+            // eslint-disable-next-line
             console.log(res);
             this.state.products = res.data.results;
             this.state.isLoading = false;
